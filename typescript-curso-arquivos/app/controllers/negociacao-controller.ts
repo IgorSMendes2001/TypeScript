@@ -1,9 +1,11 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController{
     private inputData:HTMLInputElement;
     private inputQuantidade:HTMLInputElement;
     private inputValor:HTMLInputElement;
+    private negociacoes=new Negociacoes();
     constructor(){
         this.inputData=document.querySelector('#data');
         this.inputQuantidade=document.querySelector('#quantidade');
@@ -11,7 +13,9 @@ export class NegociacaoController{
     }
     adiciona() :void {
         const negociacao=this.criaNegociacao();
-        console.log(negociacao);
+        this.negociacoes.adiciona(negociacao);
+        // this.negociacoes.lista().pop(); Método pop não existe em Array de somente leitura ou Readonly
+        console.log(this.negociacoes.lista());
         this.limparFormulario();
         }
         criaNegociacao():Negociacao{
