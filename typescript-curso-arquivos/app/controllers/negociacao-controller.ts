@@ -14,6 +14,8 @@ export class NegociacaoController{
     adiciona() :void {
         const negociacao=this.criaNegociacao();
         this.negociacoes.adiciona(negociacao);
+        // negociacao.data.setDate(12);//errado pois não podemos alterar as negociações,portanto devemos praticar a programação defensiva
+        // negociacao.data=new Date();
         // this.negociacoes.lista().pop(); Método pop não existe em Array de somente leitura ou Readonly
         console.log(this.negociacoes.lista());
         this.limparFormulario();
